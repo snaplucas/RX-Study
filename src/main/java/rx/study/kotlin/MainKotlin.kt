@@ -22,4 +22,17 @@ fun main(args: Array<String>) {
     }
 
     myObservable.subscribe(mySubscriber)
+
+    Observable.just("Hello, world!")
+            .map { s -> s + " -Dan" }
+            .subscribe({ println(it) })
+
+    Observable.just("Hello, world!")
+            .map<Int>({ it.hashCode() })
+            .subscribe { i -> println(Integer.toString(i!!)) }
+
+    Observable.just("Hello, world!")
+            .map<Int>({ it.hashCode() })
+            .map { i -> Integer.toString(i!!) }
+            .subscribe({ println(it) })
 }

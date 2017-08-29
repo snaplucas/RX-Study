@@ -5,6 +5,8 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         Observable<String> myObservable = Observable.create(sub -> {
@@ -22,7 +24,7 @@ public class Main {
                 }
         );
 
-        Subscription subscribe = Observable.just("Hello, world!").subscribe(System.out::println);
+        Subscription subscription = Observable.just("Hello, world!").subscribe(System.out::println);
 
         Subscriber<String> mySubscriber = new Subscriber<String>() {
             @Override
