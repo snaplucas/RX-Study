@@ -40,5 +40,18 @@ public class Main {
         };
 
         myObservable.subscribe(mySubscriber);
+
+        Observable.just("Hello, world!")
+                .map(s -> s + " -Dan")
+                .subscribe(System.out::println);
+
+        Observable.just("Hello, world!")
+                .map(String::hashCode)
+                .subscribe(i -> System.out.println(Integer.toString(i)));
+
+        Observable.just("Hello, world!")
+                .map(String::hashCode)
+                .map(i -> Integer.toString(i))
+                .subscribe(System.out::println);
     }
 }
