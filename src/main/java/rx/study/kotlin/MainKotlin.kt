@@ -11,6 +11,11 @@ fun main(args: Array<String>) {
             }
     )
 
+    val myObservable2 = Observable.OnSubscribe<String> { sub ->
+        sub.onNext("Hello, Lucas!")
+        sub.onCompleted()
+    }
+
     val mySubscriber = object : Subscriber<String>() {
         override fun onNext(s: String) {
             println(s)
@@ -22,6 +27,7 @@ fun main(args: Array<String>) {
     }
 
     myObservable.subscribe(mySubscriber)
+    myObservable2.call(mySubscriber)
 
     Observable.just("Hello, world!")
             .map { s -> s + " -Dan" }
